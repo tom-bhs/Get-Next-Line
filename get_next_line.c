@@ -3,16 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tom <tom@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: tbihoues <tbihoues@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 18:19:13 by tbihoues          #+#    #+#             */
-/*   Updated: 2023/11/30 23:29:06 by tom              ###   ########.fr       */
+/*   Updated: 2023/12/01 18:07:54 by tbihoues         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-
-char    *get_next_line(int fd);
 
 char	*ft_strjoin(const char *s1, const char *s2)
 {
@@ -34,4 +32,8 @@ char	*ft_strjoin(const char *s1, const char *s2)
 	dest[i + j] = '\0';
 	return (dest);
 }
+
+
+
+char    *get_next_line(int fd);
 
