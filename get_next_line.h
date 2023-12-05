@@ -6,7 +6,7 @@
 /*   By: tom <tom@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 18:07:33 by tom               #+#    #+#             */
-/*   Updated: 2023/11/29 18:53:36 by tom              ###   ########.fr       */
+/*   Updated: 2023/12/05 01:37:21 by tom              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include <stdio.h>
 #include <unistd.h>
 #include <stdlib.h>
+#include <fcntl.h>
 
 #ifndef BUFFER_SIZE
 # define BUFFER_SIZE 1

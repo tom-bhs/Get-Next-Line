@@ -6,11 +6,38 @@
 /*   By: tom <tom@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 18:05:15 by tom               #+#    #+#             */
-/*   Updated: 2023/11/30 23:35:03 by tom              ###   ########.fr       */
+/*   Updated: 2023/12/05 03:11:21 by tom              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+
+size_t	ft_strlen(const char *s)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
+}
+
+char	*ft_strrchr(const char *str, int c)
+{
+	int	i;
+
+	i = ft_strlen(str);
+	while (i > 0)
+	{
+		if (str[i] == (char)c)
+			return ((char *)&str[i]);
+		i--;
+	}
+	if (str[i] == (char)c)
+		return ((char *)&str[i]);
+	else
+		return (NULL);
+}
 
 char	*ft_strdup(const char *src)
 {
@@ -32,12 +59,39 @@ char	*ft_strdup(const char *src)
 	return (dest);
 }
 
-size_t	strlen(const char *s)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	int	i;
+	char			*sub;
+	unsigned int	i;
+	size_t			s_len;
 
 	i = 0;
-	while (str[i])
+	if (!s)
+		return (ft_strdup(""));
+	s_len = ft_strlen(s);
+	if (start >= s_len)
+		return (ft_strdup(""));
+	if (len > s_len - start)
+		len = s_len - start;
+	sub = malloc(len + 1);
+	if (!sub)
+		return (NULL);
+	while (i < len)
+	{
+		sub[i] = s[start + i];
 		i++;
-	return (i);
+	}
+	sub[i] = '\0';
+	return (sub);
+}
+
+char	*ft_strjoin(char *s1, char *s2)
+{
+	char			*res;
+
+	res = (char *) malloc((ft_strlen(s1) + ft_strlen(s2) + 1) * sizeof(char));
+	if (!res)
+		return (NULL);
+	fill_str(res, s1, s2);
+	return (res);
 }
