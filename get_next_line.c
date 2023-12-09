@@ -6,11 +6,12 @@
 /*   By: tbihoues <tbihoues@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 18:19:13 by tbihoues          #+#    #+#             */
-/*   Updated: 2023/12/05 23:27:48 by tbihoues         ###   ########.fr       */
+/*   Updated: 2023/12/09 20:13:33 by tbihoues         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h" // Assurez-vous que c'est le bon nom du fichier d'en-tête
+#include "get_next_line.h"
+
 
 char *get_next_line(int fd)
 {
@@ -41,8 +42,10 @@ char *get_next_line(int fd)
 
         newline_index = ft_strlen_char(rest, '\n');
         if (rest[newline_index] == '\n' || read_bytes == 0) {
-            line = substr(rest, 0, newline_index + (rest[newline_index] == '\n' ? 1 : 0));
-            rest = substr(rest, newline_index + 1, ft_strlen_char(rest + newline_index + 1, '\0'));
+            line = ft_substr(rest, 0, newline_index + 
+            (rest[newline_index] == '\n' ? 1 : 0));
+            rest = ft_substr(rest, newline_index + 1, 
+            ft_strlen_char(rest + newline_index + 1, '\0'));
             return line;
         }
     }
@@ -50,3 +53,4 @@ char *get_next_line(int fd)
     free(buffer);
     return (NULL);
 }
+*/
