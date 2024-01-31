@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tbihoues <tbihoues@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/14 21:47:15 by tbihoues          #+#    #+#             */
-/*   Updated: 2024/01/31 21:28:49 by tbihoues         ###   ########.fr       */
+/*   Created: 2023/11/23 14:46:33 by tbihoues          #+#    #+#             */
+/*   Updated: 2024/01/31 21:28:25 by tbihoues         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 char	*get_next_line(int fd)
 {
-	static char	buff[BUFFER_SIZE + 1];
+	static char	buff[1025][BUFFER_SIZE + 1];
 	char		*dest;
 	int			i;
 
@@ -22,21 +22,21 @@ char	*get_next_line(int fd)
 	dest = NULL;
 	if (BUFFER_SIZE == 0 || fd < 0)
 		return (0);
-	if (ft_check(buff) == 1)
+	if (ft_check(buff[fd]) == 1)
 	{
-		ft_buf_cut(buff);
-		dest = ft_join(dest, buff);
+		ft_buf_cut(buff[fd]);
+		dest = ft_join(dest, buff[fd]);
 	}
-	while (i > 0 && ft_check(buff) == 0)
+	while (i > 0 && ft_check(buff[fd]) == 0)
 	{
-		i = read(fd, buff, BUFFER_SIZE);
+		i = read(fd, buff[fd], BUFFER_SIZE);
 		if (i < 0)
 		{
 			free(dest);
 			return (NULL);
 		}
-		buff[i] = '\0';
-		dest = ft_join(dest, buff);
+		buff[fd][i] = '\0';
+		dest = ft_join(dest, buff[fd]);
 	}
 	return (dest);
 }
