@@ -5,27 +5,42 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: tbihoues <tbihoues@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/23 14:50:19 by tbihoues          #+#    #+#             */
-/*   Updated: 2024/01/31 21:28:30 by tbihoues         ###   ########.fr       */
+/*   Created: 2024/02/06 16:44:21 by tbihoues          #+#    #+#             */
+/*   Updated: 2024/02/18 17:43:16 by tbihoues         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_BONUS_H
 # define GET_NEXT_LINE_BONUS_H
 
-# include <stdio.h>
-# include <stdlib.h>
+# include <fcntl.h>
+# include <stddef.h>
 # include <unistd.h>
+# include <stdlib.h>
+# include <stdio.h>
+# include <limits.h>
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 1
+#  define BUFFER_SIZE BUFSIZ
 # endif
 
+# if BUFFER_SIZE > 9223372036854775806
+#  undef BUFFER_SIZE
+#  define BUFFER_SIZE 0
+# endif
+
+/* ---------- GNL ------------ */
 char	*get_next_line(int fd);
-int		ft_check(char *s);
-void	ft_buf_cut(char *dest);
-int		ft_len(char *s, int j);
-char	*ft_join(char *s1, char *s2);
-char	*test(char *s1, char *dest);
+void	ft_read_line(int fd, char **keep, char **tmp);
+char	*ft_parse_line(char **keep, char **tmp);
+char	*before_newline(const char *s);
+char	*after_newline(const char *s);
+
+/* ---------- UTILS ---------- */
+int		contains_newline(const char *s);
+char	*ft_strdup(const char *s1);
+char	*join_strs(const char *s1, const char *s2);
+void	*ft_malloc_zero(size_t count, size_t size);
+void	ft_free_strs(char **str, char **str2, char **str3);
 
 #endif
