@@ -6,13 +6,13 @@
 /*   By: tbihoues <tbihoues@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 13:26:20 by tbihoues          #+#    #+#             */
-/*   Updated: 2024/02/18 17:32:11 by tbihoues         ###   ########.fr       */
+/*   Updated: 2024/02/19 15:33:12 by tbihoues         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char	*get_before_newline(const char *s)
+char	*before_newline(const char *s)
 {
 	char	*res;
 	int		i;
@@ -39,7 +39,7 @@ char	*get_before_newline(const char *s)
 	return (res);
 }
 
-char	*get_after_newline(const char *s)
+char	*after_newline(const char *s)
 {
 	char	*res;
 	int		i;
@@ -99,8 +99,8 @@ char	*ft_parse_line(char **keep, char **tmp)
 
 	*tmp = ft_strdup(*keep);
 	ft_free_strs(keep, 0, 0);
-	*keep = get_after_newline(*tmp);
-	line = get_before_newline(*tmp);
+	*keep = after_newline(*tmp);
+	line = before_newline(*tmp);
 	ft_free_strs(tmp, 0, 0);
 	return (line);
 }

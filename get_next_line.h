@@ -6,7 +6,7 @@
 /*   By: tbihoues <tbihoues@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 14:48:45 by tbihoues          #+#    #+#             */
-/*   Updated: 2024/02/18 17:31:37 by tbihoues         ###   ########.fr       */
+/*   Updated: 2024/02/19 15:32:52 by tbihoues         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@
 char	*get_next_line(int fd);
 void	ft_read_line(int fd, char **keep, char **tmp);
 char	*ft_parse_line(char **keep, char **tmp);
-char	*get_before_newline(const char *s);
-char	*get_after_newline(const char *s);
+char	*before_newline(const char *s);
+char	*after_newline(const char *s);
 
 /* ---------- UTILS ---------- */
 int		contains_newline(const char *s);
