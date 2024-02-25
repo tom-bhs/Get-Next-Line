@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: tbihoues <tbihoues@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/06 16:56:58 by tbihoues          #+#    #+#             */
-/*   Updated: 2024/02/18 17:32:47 by tbihoues         ###   ########.fr       */
+/*   Created: 2024/02/25 15:38:23 by tbihoues          #+#    #+#             */
+/*   Updated: 2024/02/25 19:45:24 by tbihoues         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	contains_newline(const char *s)
 	return (0);
 }
 
-char	*join_strs(const char *s1, const char *s2)
+char	*ft_strjoin(const char *s1, const char *s2)
 {
 	char	*s;
 	int		len;
@@ -40,7 +40,7 @@ char	*join_strs(const char *s1, const char *s2)
 	i = 0;
 	while (s2 && s2[i])
 		i++;
-	s = ft_malloc_zero(len + i + 1, sizeof * s);
+	s = malloc_zero(len + i + 1, sizeof * s);
 	if (!s)
 		return (NULL);
 	len = -1;
@@ -62,7 +62,7 @@ char	*ft_strdup(const char *s1)
 	i = 0;
 	while (s1[i])
 		i++;
-	s2 = ft_malloc_zero(i + 1, sizeof * s2);
+	s2 = malloc_zero(i + 1, sizeof * s2);
 	if (!s2)
 		return (NULL);
 	i = 0;
@@ -74,27 +74,27 @@ char	*ft_strdup(const char *s1)
 	return (s2);
 }
 
-void	*ft_malloc_zero(size_t count, size_t size)
+void	*malloc_zero(size_t count, size_t size)
 {
-	void			*r;
+	void			*m;
 	unsigned char	*p;
-	size_t			total;
+	size_t			tot;
 
-	total = count * size;
-	r = malloc(total);
-	if (!r)
+	tot = count * size; //calcul la taille de la memoire a allouer
+	m = malloc(tot);
+	if (!m)
 		return (NULL);
-	p = (unsigned char *)r;
-	while (total != 0)
+	p = (unsigned char *)m; //convertie le poiteur vers la memoire allouer 
+	while (tot != 0)
 	{
 		*p = '\0';
 		p++;
-		total--;
+		tot--;
 	}
-	return (r);
+	return (m);
 }
 
-void	ft_free_strs(char **str, char **str2, char **str3)
+void	free_str(char **str, char **str2, char **str3)
 {
 	if (str && *str)
 	{
